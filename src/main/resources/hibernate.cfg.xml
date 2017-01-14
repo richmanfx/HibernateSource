@@ -4,17 +4,23 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-      <property name="connection.url">jdbc:mysql://localhost:3306/testhibernate?useSSL=false</property>
+      <property name="connection.url">jdbc:mysql://localhost:3306/testhibernate?useSSL=false&amp;serverTimezone=UTC</property>
       <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
       <property name="connection.username">vasja</property>
       <property name="connection.password">zmxncbv</property>
       <property name="hibernate.connection.characterEncoding">utf8</property>
+
+      <!--Выводить в консоль запросы к базе.-->
       <property name="show_sql">true</property>
+      <!--Выводить запросы в отформатированном виде, а не в одну строку.-->
       <property name="hibernate.format_sql">true</property>
+
       <property name="default_schema">testhibernate</property>
       <property name="hibernate.current_session_context_class">thread</property>
       
-      
+      <mapping class="ru.r5am.hibernate.entity.Author"/>
+      <mapping class="ru.r5am.hibernate.entity.Book"/>
+
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
 

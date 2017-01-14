@@ -9,7 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  * Created by zoer on 14.01.2017.
  *
  */
-public class HibernateUtil {
+class HibernateUtil {
     // Фабрика сессий
     private static SessionFactory sessionFactory;
 
@@ -26,7 +26,7 @@ public class HibernateUtil {
             StandardServiceRegistryBuilder.destroy(registry);
         }
     }
-    public static SessionFactory getSessionFactory() {
+    static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 }
