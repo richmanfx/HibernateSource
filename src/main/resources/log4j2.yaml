@@ -1,0 +1,35 @@
+Configutation:
+  name: Default
+  
+  appenders:
+    Console:
+      PatternLayout:
+        pattern: '%d{HH:mm:ss} %-5p %c{10}:%L - %m%n'
+      name: Console-Appender
+      target: SYSTEM_OUT
+ #   File:
+ #     PatternLayout:
+ #       pattern: '%d{dd.MM.yyyy HH:mm:ss} %-5p %c{10}:%L - %m%n'
+ #     fileName: logfile.log
+ #     name: File-Appender
+
+  loggers:
+    root:
+      level: debug
+      appender-ref:
+        - ref: Console-Appender
+    logger:
+      level: debug
+      name: org.dbunit
+      appender-ref:
+        - ref: Console-Appender
+#    logger:
+#      additivity: 'false'
+#      level: trace
+#      name: com.rstyle
+#      appender-ref:
+#        - level: info
+#          ref: Console-Appender
+#        - level: trace
+#          ref: File-Appender
+      
