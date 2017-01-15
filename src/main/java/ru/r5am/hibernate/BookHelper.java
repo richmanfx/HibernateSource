@@ -2,43 +2,46 @@ package ru.r5am.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import ru.r5am.hibernate.entity.Author;
+import ru.r5am.hibernate.entity.Book;
 
 import javax.persistence.Query;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
- * Created by zoer on 14.01.2017.
+ * Created by zoer on 15.01.2017.
  *
  */
-public class AuthorHelper {
+public class BookHelper {
 
     private SessionFactory sessionFactory;
 
-    AuthorHelper() {
+    BookHelper() {
         sessionFactory = HibernateUtil.getSessionFactory();
     }
-    List<Author> getAuthorList() {
+
+    List<Book> getBookList() {
         // Открыть сессию для манипуляции с персистентными объектами
         Session session = sessionFactory.openSession();
-        session.get(Author.class, 1L);
+        session.get(Book.class, 1L);
 
         // Подготовка запроса
-         // объект-конструктор запросов для Criteria API
+        // объект-конструктор запросов для Criteria API
         CriteriaBuilder cb = session.getCriteriaBuilder();  // Уже deprecated
-        CriteriaQuery cq = cb.createQuery(Author.class);
-        Root<Author> root = cq.from(Author.class);
+        CriteriaQuery cq = cb.createQuery(Book.class);
+        Root<Book> root = cq.from(Book.class);
         cq.select(root);
 
         // Выполнение запроса
         Query query = session.createQuery(cq);
-        List<Author> authorList = query.getResultList();
+        List<Book> bookList = query.getResultList();
         session.close();
-        return authorList;
+        return bookList;
     }
 
-    public Author getAuhor(String name) {
+    public Book getBook(String name) {
         return null;
     }
 }
